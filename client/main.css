@@ -1,0 +1,18 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+.add-task-input{
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.add-task-btn{
+  padding: 12px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
