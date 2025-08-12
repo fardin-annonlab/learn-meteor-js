@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import './App.html';
 import { TasksCollection } from "../api/TasksCollection";
+import './Task.js';
 
 
 Template.mainContainer.helpers({
