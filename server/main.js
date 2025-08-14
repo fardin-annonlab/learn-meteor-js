@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '/imports/api/TasksCollection';
 import { Accounts } from 'meteor/accounts-base';
+import '/imports/api/tasksMethods';
+
 
 
 const SEED_USERNAME = 'fardin';
@@ -11,7 +13,7 @@ const SEED_PASSWORD = '123456789';
 // };
 
 const insertTask = (taskText, user) =>
-  TasksCollection.insert({
+  TasksCollection.insertAsync({
     text: taskText,
     userId: user._id,
     createdAt: new Date(),

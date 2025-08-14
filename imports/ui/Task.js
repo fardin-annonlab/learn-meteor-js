@@ -6,11 +6,9 @@ import './Task.html';
 
 Template.task.events({
   'click .toggle-checked'() {
-    TasksCollection.update(this._id, {
-      $set: { isChecked: !this.isChecked },
-    });
+    Meteor.call('tasks.setIsChecked', this._id, !this.isChecked);
   },
- 'click .delete'() {
-    TasksCollection.remove(this._id);
+  'click .delete'() {
+    Meteor.call('tasks.remove', this._id);
   },
 });
