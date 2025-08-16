@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { TasksCollection } from '/imports/api/TasksCollection';
 import { Accounts } from 'meteor/accounts-base';
 import '/imports/api/tasksMethods';
+import '/imports/api/tasksPublications';
 
 
 
@@ -45,7 +46,7 @@ Meteor.startup(async () => {
     ];
 
     for (const task of tasks) {
-      await insertTask(task);
+      await insertTask(task, user);
     }
   }
 });

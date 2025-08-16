@@ -10,6 +10,8 @@ import '../api/tasksMethods';
 const HIDE_COMPLETED_STRING = 'hideCompleted';
 const getUser = () => Meteor.user();
 const isUserLogged = () => !!Meteor.userId();
+const IS_LOADING_STRING = "isLoading";
+
 
 
 const getTasksFilter = () => {
@@ -28,6 +30,10 @@ const getTasksFilter = () => {
 Template.mainContainer.onCreated(function mainContainerOnCreated() {
   this.state = new ReactiveDict();
   this.state.set(HIDE_COMPLETED_STRING, false); 
+  const handler = Meteor.subscribe('tasks');
+  Tracker.autorun(() => {
+    this.state.set(IS_LOADING_STRING, !handler.ready());
+  });
 });
 
 Template.mainContainer.helpers({
@@ -77,6 +83,10 @@ Template.mainContainer.events({
   },
   'click .user'() {
     Meteor.logout();
+  },
+  isLoading() {
+    const instance = Template.instance();
+    return instance.state.get(IS_LOADING_STRING);
   }
 });
 
